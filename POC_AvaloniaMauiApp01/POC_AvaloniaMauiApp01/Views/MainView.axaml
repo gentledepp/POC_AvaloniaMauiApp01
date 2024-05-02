@@ -15,21 +15,9 @@
       
         <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
       
+        <Button Content="Next sample" Command="{Binding NavigateToNextCommand}" />
 
-        <Button Content="Take a picture" Command="{Binding TakePictureCommand}"/> 
-        <Button Content="Pick a picture" Command="{Binding PickPictureCommand}"/>
-        <ItemsControl ItemsSource="{Binding Pictures}">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel />
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Image Source="{Binding .}" Width="150" />
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
+        <ContentControl Content="{Binding CurrentViewModel}" />       
       
     </StackPanel>
         

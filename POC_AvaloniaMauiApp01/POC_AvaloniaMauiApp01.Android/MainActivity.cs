@@ -7,6 +7,8 @@ using Avalonia.Maui;
 using Avalonia.ReactiveUI;
 using Microsoft.Maui.ApplicationModel;
 using POC_AvaloniaMauiApp01.Maui;
+using ZXing.Net.Maui;
+using ZXing.Net.Maui.Controls;
 
 namespace POC_AvaloniaMauiApp01.Android;
 
@@ -24,7 +26,9 @@ public class MainActivity : AvaloniaMainActivity<App>
             .WithInterFont()
             .UseReactiveUI()
             // support MAUI controls
-            .UseMaui<MauiApplication>(this);
+            .UseMaui<MauiApplication>(this, configure: mauiBuilder => 
+                // Add ZXING QR Code Scanning
+                mauiBuilder.UseBarcodeReader());
     }
 
     protected override void OnCreate(Bundle savedInstanceState)

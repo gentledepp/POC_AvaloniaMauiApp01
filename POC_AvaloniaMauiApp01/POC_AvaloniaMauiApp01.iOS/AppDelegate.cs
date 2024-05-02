@@ -7,6 +7,8 @@ using Avalonia.Maui;
 using Avalonia.Media;
 using Avalonia.ReactiveUI;
 using POC_AvaloniaMauiApp01.Maui;
+using ZXing.Net.Maui;
+using ZXing.Net.Maui.Controls;
 
 namespace POC_AvaloniaMauiApp01.iOS;
 
@@ -24,7 +26,9 @@ public partial class AppDelegate : AvaloniaAppDelegate<App>
             .WithInterFont()
             .UseReactiveUI()
             // support MAUI controls
-            .UseMaui<MauiApplication>(this)
+            .UseMaui<MauiApplication>(this, configure: mauiBuilder => 
+                // Add ZXING QR Code Scanning
+                mauiBuilder.UseBarcodeReader())
             // initialize the Maui.Essentials platform
             .AfterSetup(_ =>
             {

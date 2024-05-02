@@ -1,0 +1,22 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:POC_AvaloniaMauiApp01.ViewModels"
+             xmlns:controls="using:Avalonia.Maui.Controls"
+             xmlns:zxing="using:ZXing.Net.Maui.Controls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="POC_AvaloniaMauiApp01.Views.QRCodeView"
+             x:DataType="viewModels:QRCodeViewModel">
+    <StackPanel Orientation="Vertical">
+    <TextBox Text="Scan a QR Code" />
+    
+    <controls:MauiControlHost x:Name="ProgressBarHost"
+                              Margin="10">
+        <!-- <zxing:CameraBarcodeReaderView -->
+        <!--     x:Name="CameraBarcodeReaderView" -->
+        <!--     BarcodesDetected="BarcodesDetected" /> -->
+    </controls:MauiControlHost>
+        
+    </StackPanel>
+</UserControl>
