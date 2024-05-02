@@ -1,9 +1,11 @@
 ﻿using Android.App;
 using Android.Content.PM;
+using Android.OS;
 using Avalonia;
 using Avalonia.Android;
 using Avalonia.Maui;
 using Avalonia.ReactiveUI;
+using Microsoft.Maui.ApplicationModel;
 using POC_AvaloniaMauiApp01.Maui;
 
 namespace POC_AvaloniaMauiApp01.Android;
@@ -21,6 +23,14 @@ public class MainActivity : AvaloniaMainActivity<App>
         return base.CustomizeAppBuilder(builder)
             .WithInterFont()
             .UseReactiveUI()
+            // support MAUI controls
             .UseMaui<MauiApplication>(this);
+    }
+
+    protected override void OnCreate(Bundle savedInstanceState)
+    {
+        // initialize the Maui.Essentials platform
+        Platform.Init(this, savedInstanceState);
+        base.OnCreate(savedInstanceState);
     }
 }

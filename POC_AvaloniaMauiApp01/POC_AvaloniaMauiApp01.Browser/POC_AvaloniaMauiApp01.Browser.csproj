@@ -6,6 +6,7 @@
         <WasmMainJSPath>wwwroot\main.js</WasmMainJSPath>
         <WasmRuntimeAssetsLocation>./_framework</WasmRuntimeAssetsLocation>
         <UseMaui>False</UseMaui>
+        <UseMauiEssentials>False</UseMauiEssentials>
     </PropertyGroup>
 
     <ItemGroup>

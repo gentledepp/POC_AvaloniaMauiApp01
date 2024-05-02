@@ -23,6 +23,13 @@ public partial class AppDelegate : AvaloniaAppDelegate<App>
         return base.CustomizeAppBuilder(builder)
             .WithInterFont()
             .UseReactiveUI()
-            .UseMaui<MauiApplication>(this);
+            // support MAUI controls
+            .UseMaui<MauiApplication>(this)
+            // initialize the Maui.Essentials platform
+            .AfterSetup(_ =>
+            {
+                var vc = Window.RootViewController;
+                Microsoft.Maui.ApplicationModel.Platform.Init(() => vc);
+            });
     }
 }

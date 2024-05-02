@@ -11,6 +11,26 @@
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
     <vm:MainViewModel />
   </Design.DataContext>
+    <StackPanel Orientation="Vertical">
+      
+        <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+      
 
-  <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Button Content="Take a picture" Command="{Binding TakePictureCommand}"/> 
+        <Button Content="Pick a picture" Command="{Binding PickPictureCommand}"/>
+        <ItemsControl ItemsSource="{Binding Pictures}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding .}" Width="150" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+      
+    </StackPanel>
+        
 </UserControl>

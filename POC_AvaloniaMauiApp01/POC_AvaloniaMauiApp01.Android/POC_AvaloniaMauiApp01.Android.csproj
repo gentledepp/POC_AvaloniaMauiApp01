@@ -10,6 +10,7 @@
         <AndroidPackageFormat>apk</AndroidPackageFormat>
         <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
         <UseMaui>True</UseMaui>
+        <UseMauiEssentials>True</UseMauiEssentials>
     </PropertyGroup>
 
     <ItemGroup>
