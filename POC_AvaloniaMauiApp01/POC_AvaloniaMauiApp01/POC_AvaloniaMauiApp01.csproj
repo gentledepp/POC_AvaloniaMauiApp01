@@ -13,15 +13,22 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="$(AvaloniaVersion)"/>
+        <PackageReference Include="Avalonia" Version="11.1.0-beta2" />
         <PackageReference Include="Avalonia.Maui" Version="11.0.9" />
-        <PackageReference Include="Avalonia.Themes.Fluent" Version="$(AvaloniaVersion)"/>
-        <PackageReference Include="Avalonia.Fonts.Inter" Version="$(AvaloniaVersion)"/>
-        <PackageReference Include="Avalonia.ReactiveUI" Version="$(AvaloniaVersion)"/>
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.1.0-beta2" />
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.1.0-beta2" />
+        <PackageReference Include="Avalonia.ReactiveUI" Version="11.1.0-beta2" />
         <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
-        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="$(AvaloniaVersion)"/>
+        <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.1.0-beta2" />
         <PackageReference Include="ZXing.Net.Maui" Version="0.4.0" />
         <PackageReference Include="ZXing.Net.Maui.Controls" Version="0.4.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Views\QRCodeView_Windows.axaml.cs">
+        <DependentUpon>QRCodeView.Windows.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 
 </Project>

@@ -13,7 +13,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Avalonia.iOS" Version="$(AvaloniaVersion)" />
+        <PackageReference Include="Avalonia.iOS" Version="11.1.0-beta2" />
         <PackageReference Include="ZXing.Net.Maui" Version="0.4.0" />
         <PackageReference Include="ZXing.Net.Maui.Controls" Version="0.4.0" />
     </ItemGroup>

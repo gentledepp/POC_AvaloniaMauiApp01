@@ -3,7 +3,6 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:POC_AvaloniaMauiApp01.ViewModels"
-             xmlns:mauiControls="using:Microsoft.Maui.Controls"
              xmlns:controls="using:Avalonia.Maui.Controls"
              xmlns:zxing="using:ZXing.Net.Maui.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
@@ -14,9 +13,9 @@
     
     <controls:MauiControlHost x:Name="ProgressBarHost"
                               Margin="10">
-        <zxing:CameraBarcodeReaderView
-            x:Name="CameraBarcodeReaderView"
-            BarcodesDetected="BarcodesDetected" />
+        <!-- <zxing:CameraBarcodeReaderView -->
+        <!--     x:Name="CameraBarcodeReaderView" -->
+        <!--     BarcodesDetected="BarcodesDetected" /> -->
     </controls:MauiControlHost>
         
     </StackPanel>

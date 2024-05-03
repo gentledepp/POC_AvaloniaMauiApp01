@@ -6,6 +6,7 @@ using Avalonia.iOS;
 using Avalonia.Maui;
 using Avalonia.Media;
 using Avalonia.ReactiveUI;
+using Microsoft.Extensions.DependencyInjection;
 using POC_AvaloniaMauiApp01.Maui;
 using ZXing.Net.Maui;
 using ZXing.Net.Maui.Controls;
@@ -20,6 +21,35 @@ namespace POC_AvaloniaMauiApp01.iOS;
 public partial class AppDelegate : AvaloniaAppDelegate<App>
 #pragma warning restore CA1711 // Identifiers should not have incorrect suffix
 {
+    protected override AppBuilder CreateAppBuilder()
+    {
+        return AppBuilder.Configure<App>(() =>
+        {
+            var services = new ServiceCollection();
+            var app = new App();
+            app.SetServices(services);
+
+            // pre register any platform related services
+            PreRegisterServices(services);
+            // register the netstandard services
+            app.ConfigureServices(services);
+            // allow platform-specific overrides
+            PostRegisterServices(services);
+
+            return app;
+        }).UseiOS();
+    }
+
+    private void PreRegisterServices(ServiceCollection services)
+    {
+        services.AddSingleton<IPlatformInfo, iOSPlatformInfo>();
+    }
+    
+    private void PostRegisterServices(ServiceCollection services)
+    {
+        
+    }
+
     protected override AppBuilder CustomizeAppBuilder(AppBuilder builder)
     {
         return base.CustomizeAppBuilder(builder)
