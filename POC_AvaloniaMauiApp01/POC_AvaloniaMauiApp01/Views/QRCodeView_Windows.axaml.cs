@@ -19,6 +19,6 @@ public partial class QRCodeView_Windows: UserControl
         var allResults = e.Results.Where(r => r?.Value != null).Select(r => r?.Value).ToArray();
 
         
-        ((QRCodeViewModel)DataContext).ScannedQRCodes = string.Join("|", allResults);
+        ((QRCodeViewModel)DataContext).ScannedQrCodeInfo = string.Join("|", allResults);
     }
 }

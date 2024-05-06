@@ -1,4 +1,6 @@
-﻿namespace POC_AvaloniaMauiApp01.ViewModels;
+﻿using System;
+
+namespace POC_AvaloniaMauiApp01.ViewModels;
 using System.IO;
 using System.Linq;
 using System.Reactive;
@@ -16,32 +18,48 @@ public class PicturesViewModel : ViewModelBase
         {
             if (MediaPicker.IsCaptureSupported)
             {
-                var p = await MediaPicker.Default.CapturePhotoAsync();
-                if (p is null)
+                try
                 {
-                    Pictures.Clear();
-                    return;
+                    var p = await MediaPicker.Default.CapturePhotoAsync();
+                    if (p is null)
+                    {
+                        Pictures.Clear();
+                        return;
+                    }
+
+                    using var imageStream = File.OpenRead(p.FullPath);
+                    Pictures.Add(Bitmap.DecodeToWidth(imageStream, 150));
                 }
-                using var imageStream = File.OpenRead(p.FullPath);
-                Pictures.Add(Bitmap.DecodeToWidth(imageStream, 150));
+                catch (OperationCanceledException okex)
+                {
+                    
+                }
             }
         });
         PickPictureCommand = ReactiveCommand.CreateFromTask(async () =>
         {
             if (MediaPicker.IsCaptureSupported)
             {
-                var p = await FilePicker.Default.PickMultipleAsync();
-                if (!p.Any())
+                try
                 {
-                    Pictures.Clear();
-                    return;
-                }
+                    var p = await FilePicker.Default.PickMultipleAsync();
+                    if (p is null || !p.Any())
+                    {
+                        Pictures.Clear();
+                        return;
+                    }
 
-                foreach (var pic in p)
+                    foreach (var pic in p)
+                    {
+                        using var imageStream = File.OpenRead(pic.FullPath);
+                        var bmp = Bitmap.DecodeToWidth(imageStream, 150);
+                        Pictures.Add(bmp);
+                    }
+                
+                }
+                catch (OperationCanceledException okex)
                 {
-                    using var imageStream = File.OpenRead(pic.FullPath);
-                    var bmp = Bitmap.DecodeToWidth(imageStream, 150);
-                    Pictures.Add(bmp);
+                    
                 }
             }
         });
