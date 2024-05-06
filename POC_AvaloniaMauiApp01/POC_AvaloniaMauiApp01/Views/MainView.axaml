@@ -11,14 +11,16 @@
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
     <vm:MainViewModel />
   </Design.DataContext>
-    <StackPanel Orientation="Vertical">
+    <Grid RowDefinitions="Auto,Auto,*">
       
         <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
       
-        <Button Content="Next sample" Command="{Binding NavigateToNextCommand}" />
+        <Button Grid.Row="1" Content="Next sample" Command="{Binding NavigateToNextCommand}" />
 
-        <ContentControl Content="{Binding CurrentViewModel}" />       
+        <ContentControl Grid.Row="2" Content="{Binding CurrentViewModel}" 
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch"/>       
       
-    </StackPanel>
+    </Grid>
         
 </UserControl>

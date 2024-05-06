@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
 using POC_AvaloniaMauiApp01.ViewModels;
@@ -20,5 +21,15 @@ public partial class QRCodeView: UserControl
 
         
         ((QRCodeViewModel)DataContext).ScannedQRCodes = string.Join("|", allResults);
+    }
+
+    private void SwitchCameraButton_Clicked(object? sender, EventArgs e)
+    {
+        
+    }
+
+    private void TorchButton_Clicked(object? sender, EventArgs e)
+    {
+        
     }
 }

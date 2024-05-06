@@ -5,18 +5,59 @@
              xmlns:viewModels="clr-namespace:POC_AvaloniaMauiApp01.ViewModels"
              xmlns:controls="using:Avalonia.Maui.Controls"
              xmlns:zxing="using:ZXing.Net.Maui.Controls"
+             xmlns:maui="using:Microsoft.Maui.Controls"
+             xmlns:mau="using:Microsoft.Maui"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="POC_AvaloniaMauiApp01.Views.QRCodeView"
              x:DataType="viewModels:QRCodeViewModel">
-    <StackPanel Orientation="Vertical">
-    <TextBox Text="Scan a QR Code" />
-    
+ 
     <controls:MauiControlHost x:Name="ProgressBarHost"
-                              Margin="10">
-        <!-- <zxing:CameraBarcodeReaderView -->
-        <!--     x:Name="CameraBarcodeReaderView" -->
-        <!--     BarcodesDetected="BarcodesDetected" /> -->
-    </controls:MauiControlHost>
+                              Margin="0">
+        <maui:Grid >
+            <maui:Grid.RowDefinitions>
+                <maui:RowDefinition Height="{controls:MauiGridLengthExtension 1, Star}"/>
+                <maui:RowDefinition Height="{controls:MauiGridLengthExtension 3, Star}"/>
+                <maui:RowDefinition Height="{controls:MauiGridLengthExtension 1, Star}"/>
+            </maui:Grid.RowDefinitions>
         
-    </StackPanel>
+            <zxing:CameraBarcodeReaderView
+                maui:Grid.Row="0" maui:Grid.RowSpan="3"
+                BarcodesDetected="BarcodesDetected"
+            />
+        
+            <maui:Grid
+                maui:Grid.Row="0"
+                BackgroundColor="#aa000000">
+                <maui:Label maui:Grid.Row="2" Text="{Binding ScannedQRCodes}" HorizontalOptions="Center" VerticalOptions="Center" TextColor="White" />
+            </maui:Grid>
+        
+            <maui:Grid
+                maui:Grid.Row="3"
+                BackgroundColor="#aa000000"
+                Padding="20">
+                <maui:Grid.ColumnDefinitions>
+                    <maui:ColumnDefinition Width="{controls:MauiGridLengthExtension 0, Auto}"/>
+                    <maui:ColumnDefinition Width="{controls:MauiGridLengthExtension 1, Star}"/>
+                    <maui:ColumnDefinition Width="{controls:MauiGridLengthExtension 0, Auto}"/>
+                </maui:Grid.ColumnDefinitions>
+        
+                <maui:Button Text="🔄️" maui:Grid.Column="0" BackgroundColor="#aa000000" CornerRadius="8" BorderColor="Black" Clicked="SwitchCameraButton_Clicked" />
+        
+                <zxing:BarcodeGeneratorView
+                    maui:Grid.Column="1"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    HeightRequest="100"
+                    WidthRequest="100"
+                    ForegroundColor="DarkBlue"
+                    Format="QrCode"
+                    Value="Bla"
+                    BarcodeMargin="1" />
+        
+                <maui:Button Text="💡" maui:Grid.Column="2" BackgroundColor="#aa000000" CornerRadius="8" BorderColor="Black" Clicked="TorchButton_Clicked" />
+            </maui:Grid>
+        
+        </maui:Grid>
+             
+     </controls:MauiControlHost>    
 </UserControl>
