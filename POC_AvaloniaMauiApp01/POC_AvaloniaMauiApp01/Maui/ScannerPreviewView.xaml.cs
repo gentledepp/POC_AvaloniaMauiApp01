@@ -7,15 +7,23 @@ using System.Threading.Tasks;
 using Microsoft.Maui.ApplicationModel;
 using Microsoft.Maui.Controls;
 using POC_AvaloniaMauiApp01.ViewModels;
+using ReactiveUI;
+using ReactiveUI.Maui;
 using ZXing.Net.Maui;
 
 namespace POC_AvaloniaMauiApp01.Maui;
 
-public partial class ScannerPreviewView : ContentView
+public partial class ScannerPreviewView : ReactiveContentView<QRCodeViewModel>
 {
     public ScannerPreviewView()
     {
         InitializeComponent();
+
+        this.WhenActivated(d =>
+        {
+            //this.Bind(ViewModel, x => x.IsTorchOn, x => x.QReaderView.IsTorchOn)
+            //    .DisposeWith(d);
+        });
     }
     
     
