@@ -7,6 +7,7 @@ using Avalonia.Data.Converters;
 using Microsoft.Maui.Controls;
 using POC_AvaloniaMauiApp01.ViewModels;
 using ZXing.Net.Maui;
+using ZXing.Net.Maui.Controls;
 
 namespace POC_AvaloniaMauiApp01.Views;
 
