@@ -11,6 +11,7 @@
         <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
         <UseMaui>True</UseMaui>
         <UseMauiEssentials>True</UseMauiEssentials>
+        <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     </PropertyGroup>
 
     <ItemGroup>
