@@ -11,7 +11,7 @@
     
         <Grid RowDefinitions="1*,3*,1*">
             
-            <controls:MauiControlHost x:Name="ProgressBarHost"
+            <controls:MauiControlHost x:Name="QRCodeScannerHost"
                                       Grid.Row="1"
                                       Margin="0">
                <maui:ScannerPreviewView />
@@ -28,7 +28,8 @@
         
                 <Button Content="🔄️" Grid.Column="0" Background="#aa000000" CornerRadius="8" BorderBrush="Black" Command="{Binding SwitchCameraCommand}" />
         
-                <controls:MauiControlHost Grid.Column="1"
+                <controls:MauiControlHost x:Name="BarcodeViewHost"
+                                          Grid.Column="1"
                                           Margin="0">
                     <maui:BarcodeView />
                 </controls:MauiControlHost>
